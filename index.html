@@ -4,81 +4,98 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JavaScript Interactive Playground</title>
+
     <style>
       body {
-        font-family: "poppins", Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #e3f2fd, #ade1ec);
+        font-family: "Poppins", system-ui, sans-serif;
+        background: linear-gradient(135deg, #e3f2fd, #c8e6f5);
         margin: 0;
-        padding: 20px;
-        text-align: center;
+        padding: 30px;
       }
-      h1 {
-        margin-bottom: 30px;
-      }
+
       .heading {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        margin: 50px;
-        border: 1px solid #ccc;
+        text-align: center;
+        margin-bottom: 40px;
       }
+
+      .heading h1 {
+        font-size: 32px;
+        color: #0d47a1;
+      }
+
       .container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
         gap: 20px;
         max-width: 1200px;
         margin: auto;
-        border: 1px solid #ccc;
-        padding: 20px;
+        text-align: center;
       }
+
       .card {
-        background: white;
-        border: 1px solid #ccc;
-        padding: 20px;
-        border-radius: 15px;
+        background: #fff;
+        padding: 22px;
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
       }
+
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+      }
+
+      h2 {
+        margin-bottom: 10px;
+        color: #1976d2;
+      }
+
       input,
       select,
       button {
         width: 90%;
         padding: 10px;
-        margin: 8px 0;
+        margin-top: 8px;
         border-radius: 8px;
         border: 1px solid #ccc;
-        font-size: 16px;
+        font-size: 15px;
       }
+
       button {
         background: #1976d2;
-        color: white;
+        color: #fff;
         border: none;
         cursor: pointer;
+        margin-top: 12px;
       }
+
       button:hover {
         background: #0d47a1;
       }
+
       .output {
-        margin-top: 10px;
-        font-weight: bold;
+        margin-top: 12px;
+        font-weight: 600;
+        color: #333;
+        white-space: pre-line;
       }
     </style>
   </head>
+
   <body>
-    <!-- Heading -->
     <div class="heading">
-      <h1>JavaScript Interactive Playground</h1>
+      <h1>JavaScript Interactive Playground 🧸</h1>
     </div>
 
-    <!-- Full Game Board -->
     <div class="container">
-      <!-- ✅ Create a button. When the button is clicked, show a message on the webpage using JavaScript. -->
       <div class="card">
         <h2>Welcome</h2>
         <button onclick="showWelcome()">Click to Start</button>
         <div id="welcome" class="output"></div>
       </div>
 
-      <!-- ✅Display numbers from on the webpage using a loop. -->
       <div class="card">
         <h2>Generate Numbers</h2>
         <button onclick="generateNumbers()">Generate 1–10</button>
@@ -87,21 +104,15 @@
 
       <div class="card">
         <h2>Emoji Party</h2>
-        <button onclick="showEmojis()">Celebrate 🎉🎉🎉</button>
+        <button onclick="showEmojis()">Celebrate 🎉</button>
         <div id="emojis" class="output"></div>
-      </div>
-      <div class="card">
-        <h2>Even/Odd Test</h2>
-        <input type="number" id="num" placeholder="Enter a number" />
-        <button onclick="checkEvenOdd()">Test</button>
-        <div id="numberResult" class="output"></div>
       </div>
 
       <div class="card">
-        <h2>Greeting</h2>
-        <input type="text" id="name" placeholder="Enter your name" />
-        <button onclick="greetUser()">Greet Me</button>
-        <div id="greeting" class="output"></div>
+        <h2>Even / Odd</h2>
+        <input type="number" id="num" placeholder="Enter a number" />
+        <button onclick="checkEvenOdd()">Check</button>
+        <div id="numberResult" class="output"></div>
       </div>
 
       <div class="card">
@@ -119,8 +130,15 @@
           <option value="blue">Blue</option>
           <option value="green">Green</option>
         </select>
-        <button onclick="colorMessage()">Show Message</button>
+        <button onclick="colorMessage()">Show</button>
         <div id="colorResult" class="output"></div>
+      </div>
+
+      <div class="card">
+        <h2>Multiplication Table</h2>
+        <input type="number" id="tableNum" placeholder="Enter number" />
+        <button onclick="generateTable()">Generate</button>
+        <div id="table" class="output"></div>
       </div>
 
       <div class="card">
@@ -130,19 +148,12 @@
         <button onclick="addNumbers()">Add</button>
         <div id="sumResult" class="output"></div>
       </div>
-
-      <div class="card">
-        <h2>Multiplication Table</h2>
-        <input type="number" id="tableNum" placeholder="Enter number" />
-        <button onclick="generateTable()">Generate Table</button>
-        <div id="table" class="output"></div>
-      </div>
     </div>
 
     <script>
       function showWelcome() {
         document.getElementById("welcome").innerText =
-          "Welcome to JavaScript Interactive Playground 🚀";
+          "Welcome to JavaScript Playground 🚀";
       }
 
       function generateNumbers() {
@@ -153,24 +164,6 @@
         document.getElementById("numbers").innerText = result;
       }
 
-      function checkEvenOdd() {
-        const num = document.getElementById("num").value;
-        if (num === "") return;
-        document.getElementById("numberResult").innerText =
-          num % 2 === 0 ? "Even Number" : "Odd Number";
-      }
-
-      function greetUser() {
-        const name = document.getElementById("name").value;
-        document.getElementById("greeting").innerText = "Hello " + name + " 👋";
-      }
-
-      function checkAge() {
-        const age = document.getElementById("age").value;
-        document.getElementById("ageResult").innerText =
-          age < 18 ? "You are under 18 👶" : "You are 18 or above ✅";
-      }
-
       function showEmojis() {
         let emojis = "";
         for (let i = 0; i < 5; i++) {
@@ -179,32 +172,78 @@
         document.getElementById("emojis").innerText = emojis;
       }
 
+      function checkEvenOdd() {
+        const value = document.getElementById("num").value;
+        if (value === "") {
+          document.getElementById("numberResult").innerText =
+            "Please enter a number";
+          return;
+        }
+        const num = Number(value);
+        document.getElementById("numberResult").innerText =
+          num % 2 === 0 ? "Even Number" : "Odd Number";
+      }
+
+      function checkAge() {
+        const value = document.getElementById("age").value;
+        if (value === "") {
+          document.getElementById("ageResult").innerText =
+            "Please enter your age";
+          return;
+        }
+        const age = Number(value);
+        document.getElementById("ageResult").innerText =
+          age < 18 ? "You are under 18 👶" : "You are Adult 🧑";
+      }
+
       function colorMessage() {
         const color = document.getElementById("color").value;
-        let message = "";
-        if (color === "red") message = "You chose energy & power 🔥";
-        else if (color === "blue") message = "You feel calm & cool 🌊";
-        else if (color === "green") message = "You love nature 🌱";
-        document.getElementById("colorResult").innerText = message;
-      }
+        const result = document.getElementById("colorResult");
 
-      function add(a, b) {
-        return a + b;
-      }
-
-      function addNumbers() {
-        const a = Number(document.getElementById("a").value);
-        const b = Number(document.getElementById("b").value);
-        document.getElementById("sumResult").innerText = "Sum = " + add(a, b);
+        if (color === "red") {
+          result.innerText = "You chose red 🔥";
+          result.style.color = "red";
+        } else if (color === "blue") {
+          result.innerText = "You chose blue 🌊";
+          result.style.color = "blue";
+        } else if (color === "green") {
+          result.innerText = "You chose green 🌱";
+          result.style.color = "green";
+        } else {
+          result.innerText = "Please select a color";
+          result.style.color = "#333";
+        }
       }
 
       function generateTable() {
-        const n = document.getElementById("tableNum").value;
+        const value = document.getElementById("tableNum").value;
+        if (value === "") {
+          document.getElementById("table").innerText = "Please enter a number";
+          return;
+        }
+        const n = Number(value);
         let table = "";
         for (let i = 1; i <= 10; i++) {
           table += `${n} × ${i} = ${n * i}\n`;
         }
         document.getElementById("table").innerText = table;
+      }
+
+      function addNumbers() {
+        const aValue = document.getElementById("a").value;
+        const bValue = document.getElementById("b").value;
+
+        if (aValue === "" || bValue === "") {
+          document.getElementById("sumResult").innerText =
+            "Please enter both numbers";
+          return;
+        }
+
+        const a = Number(aValue);
+        const b = Number(bValue);
+
+        document.getElementById("sumResult").innerText =
+          `Sum of ${a} and ${b} = ${a + b}`;
       }
     </script>
   </body>
