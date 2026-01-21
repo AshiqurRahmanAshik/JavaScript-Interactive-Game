@@ -25,7 +25,7 @@
       }
       .container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 20px;
         max-width: 1200px;
         margin: auto;
@@ -71,27 +71,30 @@
 
     <!-- Full Game Board -->
     <div class="container">
-      <!-- Create a button. When the button is clicked, show a message on the webpage using JavaScript. -->
+      <!-- ✅ Create a button. When the button is clicked, show a message on the webpage using JavaScript. -->
       <div class="card">
         <h2>Welcome</h2>
         <button onclick="showWelcome()">Click to Start</button>
         <div id="welcome" class="output"></div>
       </div>
 
-
-
-      
-      <div class="card">
-        <h2>Number Analyzer</h2>
-        <input type="number" id="num" placeholder="Enter a number" />
-        <button onclick="checkEvenOdd()">Analyze</button>
-        <div id="numberResult" class="output"></div>
-      </div>
-
+      <!-- ✅Display numbers from on the webpage using a loop. -->
       <div class="card">
         <h2>Generate Numbers</h2>
         <button onclick="generateNumbers()">Generate 1–10</button>
         <div id="numbers" class="output"></div>
+      </div>
+
+      <div class="card">
+        <h2>Emoji Party</h2>
+        <button onclick="showEmojis()">Celebrate 🎉🎉🎉</button>
+        <div id="emojis" class="output"></div>
+      </div>
+      <div class="card">
+        <h2>Even/Odd Test</h2>
+        <input type="number" id="num" placeholder="Enter a number" />
+        <button onclick="checkEvenOdd()">Test</button>
+        <div id="numberResult" class="output"></div>
       </div>
 
       <div class="card">
@@ -106,12 +109,6 @@
         <input type="number" id="age" placeholder="Enter age" />
         <button onclick="checkAge()">Check</button>
         <div id="ageResult" class="output"></div>
-      </div>
-
-      <div class="card">
-        <h2>Emoji Party</h2>
-        <button onclick="showEmojis()">Celebrate 🎉</button>
-        <div id="emojis" class="output"></div>
       </div>
 
       <div class="card">
@@ -148,19 +145,19 @@
           "Welcome to JavaScript Interactive Playground 🚀";
       }
 
-      function checkEvenOdd() {
-        const num = document.getElementById("num").value;
-        if (num === "") return;
-        document.getElementById("numberResult").innerText =
-          num % 2 === 0 ? "Even Number" : "Odd Number";
-      }
-
       function generateNumbers() {
         let result = "";
         for (let i = 1; i <= 10; i++) {
           result += i + " ";
         }
         document.getElementById("numbers").innerText = result;
+      }
+
+      function checkEvenOdd() {
+        const num = document.getElementById("num").value;
+        if (num === "") return;
+        document.getElementById("numberResult").innerText =
+          num % 2 === 0 ? "Even Number" : "Odd Number";
       }
 
       function greetUser() {
