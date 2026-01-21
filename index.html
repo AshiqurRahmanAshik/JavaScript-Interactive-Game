@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Interactive Playground</title>
+    <style>
+      body {
+        font-family: "poppins", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #e3f2fd, #ade1ec);
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+      }
+      h1 {
+        margin-bottom: 30px;
+      }
+      .heading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin: 50px;
+        border: 1px solid #ccc;
+      }
+      .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        max-width: 1200px;
+        margin: auto;
+        border: 1px solid #ccc;
+        padding: 20px;
+      }
+      .card {
+        background: white;
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 15px;
+      }
+      input,
+      select,
+      button {
+        width: 90%;
+        padding: 10px;
+        margin: 8px 0;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+      }
+      button {
+        background: #1976d2;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #0d47a1;
+      }
+      .output {
+        margin-top: 10px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Heading -->
+    <div class="heading">
+      <h1>JavaScript Interactive Playground</h1>
+    </div>
+
+    <!-- Full Game Board -->
+    <div class="container">
+      <!-- Create a button. When the button is clicked, show a message on the webpage using JavaScript. -->
+      <div class="card">
+        <h2>Welcome</h2>
+        <button onclick="showWelcome()">Click to Start</button>
+        <div id="welcome" class="output"></div>
+      </div>
+
+
+
+      
+      <div class="card">
+        <h2>Number Analyzer</h2>
+        <input type="number" id="num" placeholder="Enter a number" />
+        <button onclick="checkEvenOdd()">Analyze</button>
+        <div id="numberResult" class="output"></div>
+      </div>
+
+      <div class="card">
+        <h2>Generate Numbers</h2>
+        <button onclick="generateNumbers()">Generate 1–10</button>
+        <div id="numbers" class="output"></div>
+      </div>
+
+      <div class="card">
+        <h2>Greeting</h2>
+        <input type="text" id="name" placeholder="Enter your name" />
+        <button onclick="greetUser()">Greet Me</button>
+        <div id="greeting" class="output"></div>
+      </div>
+
+      <div class="card">
+        <h2>Age Checker</h2>
+        <input type="number" id="age" placeholder="Enter age" />
+        <button onclick="checkAge()">Check</button>
+        <div id="ageResult" class="output"></div>
+      </div>
+
+      <div class="card">
+        <h2>Emoji Party</h2>
+        <button onclick="showEmojis()">Celebrate 🎉</button>
+        <div id="emojis" class="output"></div>
+      </div>
+
+      <div class="card">
+        <h2>Color Message</h2>
+        <select id="color">
+          <option value="">Select a color</option>
+          <option value="red">Red</option>
+          <option value="blue">Blue</option>
+          <option value="green">Green</option>
+        </select>
+        <button onclick="colorMessage()">Show Message</button>
+        <div id="colorResult" class="output"></div>
+      </div>
+
+      <div class="card">
+        <h2>Add Two Numbers</h2>
+        <input type="number" id="a" placeholder="First number" />
+        <input type="number" id="b" placeholder="Second number" />
+        <button onclick="addNumbers()">Add</button>
+        <div id="sumResult" class="output"></div>
+      </div>
+
+      <div class="card">
+        <h2>Multiplication Table</h2>
+        <input type="number" id="tableNum" placeholder="Enter number" />
+        <button onclick="generateTable()">Generate Table</button>
+        <div id="table" class="output"></div>
+      </div>
+    </div>
+
+    <script>
+      function showWelcome() {
+        document.getElementById("welcome").innerText =
+          "Welcome to JavaScript Interactive Playground 🚀";
+      }
+
+      function checkEvenOdd() {
+        const num = document.getElementById("num").value;
+        if (num === "") return;
+        document.getElementById("numberResult").innerText =
+          num % 2 === 0 ? "Even Number" : "Odd Number";
+      }
+
+      function generateNumbers() {
+        let result = "";
+        for (let i = 1; i <= 10; i++) {
+          result += i + " ";
+        }
+        document.getElementById("numbers").innerText = result;
+      }
+
+      function greetUser() {
+        const name = document.getElementById("name").value;
+        document.getElementById("greeting").innerText = "Hello " + name + " 👋";
+      }
+
+      function checkAge() {
+        const age = document.getElementById("age").value;
+        document.getElementById("ageResult").innerText =
+          age < 18 ? "You are under 18 👶" : "You are 18 or above ✅";
+      }
+
+      function showEmojis() {
+        let emojis = "";
+        for (let i = 0; i < 5; i++) {
+          emojis += "😀 ";
+        }
+        document.getElementById("emojis").innerText = emojis;
+      }
+
+      function colorMessage() {
+        const color = document.getElementById("color").value;
+        let message = "";
+        if (color === "red") message = "You chose energy & power 🔥";
+        else if (color === "blue") message = "You feel calm & cool 🌊";
+        else if (color === "green") message = "You love nature 🌱";
+        document.getElementById("colorResult").innerText = message;
+      }
+
+      function add(a, b) {
+        return a + b;
+      }
+
+      function addNumbers() {
+        const a = Number(document.getElementById("a").value);
+        const b = Number(document.getElementById("b").value);
+        document.getElementById("sumResult").innerText = "Sum = " + add(a, b);
+      }
+
+      function generateTable() {
+        const n = document.getElementById("tableNum").value;
+        let table = "";
+        for (let i = 1; i <= 10; i++) {
+          table += `${n} × ${i} = ${n * i}\n`;
+        }
+        document.getElementById("table").innerText = table;
+      }
+    </script>
+  </body>
+</html>
