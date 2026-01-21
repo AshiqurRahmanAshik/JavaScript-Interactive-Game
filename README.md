@@ -5,7 +5,7 @@ This project is designed to practice core JavaScript concepts like **functions, 
 
 ---
 
-## 🚀 Live Preview
+## 🚀 Live Preview: https://ashiqurrahmanashik.github.io/JavaScript-Interactive-Game/
 
 
 ---
